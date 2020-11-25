@@ -1,4 +1,4 @@
-public class Voiture extends VehiculeAMoteur implements Vidangeable {
+public class Voiture extends Vehicule implements Vidangeable {
 
     static int nbRoues=4;
 
@@ -7,33 +7,19 @@ public class Voiture extends VehiculeAMoteur implements Vidangeable {
     String couleur;
     int rapportCourant;
 
-
-
     Voiture() {
-        super(new Moteur());
+
     }
 
     Voiture(String couleur) {
-        this();
         this.couleur = couleur;
         System.out.println("une voiture est construite avec la couleur");
     }
 
-    Voiture(Moteur moteur) {
-        this();
-
-    }
-
     Voiture(String carburation, int nbCylindres) {
-        this();
         Moteur moteur = new Moteur();
         moteur.carburation = carburation;
         moteur.nbCylindres = nbCylindres;
-        this.moteur = moteur;
-    }
-
-    static void klaxonner() {
-        System.out.println("Tutut!!!");
     }
 
     static void tourner(boolean droite, int angle) {
@@ -71,5 +57,10 @@ public class Voiture extends VehiculeAMoteur implements Vidangeable {
     @Override
     public void vidanger() {
         System.out.println("Devisser le bouchon sous la culasse et attendre que ca coule.");
+    }
+
+    @Override
+    void klaxonner() {
+        System.out.println("Knutt Knutt");
     }
 }
