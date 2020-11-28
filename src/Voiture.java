@@ -2,10 +2,12 @@ public class Voiture extends Vehicule implements Vidangeable {
 
     static int nbRoues=4;
 
+
+
     int nbPortes=5;
-    boolean automatique;
+    TypeBoiteVitesse typeBoite;
     String couleur;
-    int rapportCourant;
+    Integer rapportCourant;
 
     Voiture() {
 
@@ -45,7 +47,7 @@ public class Voiture extends Vehicule implements Vidangeable {
         System.out.println("La voiture va tourner à "+droiteOuGauche+" d'un angle de "+ angle);
     }
 
-    Ville transporter(Passager passager, Ville villeDeDepart) {
+    Ville transporter(Passager passager, Ville villeDeDepart, Ville[] villeEtapes) {
         System.out.println("La voiture transporte un passager qui s'appelle " + passager.prenom+" "+passager.nom);
         System.out.println("Le passager est parti de la ville de "+ villeDeDepart.nom);
 
