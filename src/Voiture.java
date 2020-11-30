@@ -1,8 +1,21 @@
+import java.util.Objects;
+
 public class Voiture extends Vehicule implements Vidangeable {
 
     static int nbRoues=4;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Voiture voiture = (Voiture) o;
+        return nbPortes == voiture.nbPortes;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(nbPortes);
+    }
 
     int nbPortes=5;
     TypeBoiteVitesse typeBoite;
@@ -42,14 +55,25 @@ public class Voiture extends Vehicule implements Vidangeable {
         }
         return rapportCourant;
     }
+
+    public static void main(String... args) {
+
+        System.out.println("Je commnence dans la classe Voiture");
+    }
     
     void tourner(String droiteOuGauche, int angle) {
         System.out.println("La voiture va tourner à "+droiteOuGauche+" d'un angle de "+ angle);
     }
 
-    Ville transporter(Passager passager, Ville villeDeDepart, Ville[] villeEtapes) {
+    Ville transporter(Passager passager, Ville villeDeDepart, Ville... villeEtapes) {
         System.out.println("La voiture transporte un passager qui s'appelle " + passager.prenom+" "+passager.nom);
         System.out.println("Le passager est parti de la ville de "+ villeDeDepart.nom);
+
+        System.out.println("La 1ere ville etape est "+ villeEtapes[0].nom);
+        System.out.println("La 3eme ville etape est "+ villeEtapes[2].nom);
+
+        System.out.println("il y a "+ villeEtapes.length +" villes etapes");
+
 
         Ville villeDeDestination = new Ville();
         villeDeDestination.nom = "Wellington";
@@ -65,4 +89,5 @@ public class Voiture extends Vehicule implements Vidangeable {
     void klaxonner() {
         System.out.println("Knutt Knutt");
     }
+
 }
